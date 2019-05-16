@@ -1,3 +1,3 @@
-#Hieu's Personal Website
+# Hieu's Personal Website built with React
 
-Link:
+Link: https://hewietran.github.io/hieus-website-react/
