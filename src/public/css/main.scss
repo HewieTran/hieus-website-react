@@ -1,0 +1,435 @@
+// $myColor: rgb(236, 236, 236);
+
+// $colors: (
+//     primary: #005DFF
+// );
+
+// @function color($chosenColor) {
+//     @return map-get($colors, $chosenColor);
+// }
+
+$desktop: 1111px;
+
+@mixin desktop {
+    @media (min-width: #{$desktop}) {
+        @content;
+    }
+}
+
+// to use @mixin, add @include inside a css prop
+
+// @import url('https://fonts.googleapis.com/css?family=Quattrocento');
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
+
+$colors: (
+    primaryHeader: rgb(36, 66, 117),
+    primary: rgb(71, 71, 71),
+    sectionA: rgba(255, 255, 255, 0.7),
+    sectionB: rgba(17,193,255, 0.2),
+    sectionC: rgba(39, 39, 39, 0.8),
+    project1btn: rgb(219,50,54),
+    project2btn: rgb(0,176,240),
+    project3btn: rgb(255,192,0)
+); 
+
+$imageSizes: (
+    primary: 3em,
+    width: 90%,
+    height: 550px,
+    widthDesktop: 280px,
+    heightDesktop: 168px,
+    border-radius: 25px,
+    profileImgWidth: 500px,
+    profileImgHeight: 100%,
+    profileImgWidthDesktop: 225px,
+    profileImgHeightDesktop: 225px,
+);
+
+$fonts: ( 
+    header: 55px,
+    body: 40px,
+    btn: 30px,
+    btnDesktop: 14px,
+    headerDesktop: 30px,
+    bodyDesktop: 18px  
+);
+
+$sizes: (
+    svgBoxWidth: 135px,
+    svgBoxWidthDesktop: 100px,
+    svgBoxContactWidth: 40px,
+    svgBoxContactWidthDesktop: 30px,
+);
+
+@function profileImg($size) {
+    @return map-get($map: $imageSizes, $key: $size)
+};
+
+@function projectImages($size) {
+    @return map-get($map: $imageSizes, $key: $size)
+};
+
+@function color($color) {
+    @return map-get($map: $colors, $key: $color)
+};
+
+
+@function fonts($font) {
+    @return map-get($map: $fonts, $key: $font)
+};
+
+@function sizes($size) {
+    @return map-get($map: $sizes, $key: $size)
+}
+
+body, html {
+    font-family: 'Nanum Gothic', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.profileImg {
+    width: profileImg(profileImgWidth);
+    height: 100%; 
+
+    @include desktop() {
+        width: profileImg(profileImgWidthDesktop);
+        height: profileImg(profileImgHeightDesktop);
+
+    }
+}
+
+body {
+    background-image: url(../../Images/backgroundImg2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+    
+
+.section-a-intro {
+    height: 1750px;
+    background: color(sectionA);
+    text-align: center;
+    padding: 1.5em;
+    padding-top: 5em;
+
+    @include desktop() {
+        height: 560px;
+        display: grid;
+        grid-template-columns: 1fr repeat(2, minmax(auto, 30em)) 1fr;
+
+
+    }
+
+    .section-a-content-wrap {
+            @include desktop() {
+                grid-column: 2/4;
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+            }
+    }
+
+    .section-a-content {
+        @include desktop {
+            text-align: left;
+        }
+    }
+
+    .profile-intro-header {
+        font-weight: bold;
+        
+        h1 {
+        font-size: fonts(header);
+        font-weight: bold;
+        color: color(primaryHeader);
+        margin-top: 1em;
+            
+            @include desktop() {
+                font-size: fonts(headerDesktop);
+                margin-top: 0;
+            }
+        }
+    }
+
+    .profile-intro-body {
+        color: color(Sprimary);
+        font-size: fonts(body);
+        margin-top: 1em;
+
+        @include desktop() {
+            font-size: fonts(bodyDesktop);
+        }
+    }
+}
+
+
+.section-b-projects {
+    text-align: center;
+    padding: 3em;
+    background: color(sectionB);
+    position: relative;
+    height: 2700px;
+
+    .project-header {
+        text-align: center;
+        left: 0; right: 0;
+        position: absolute;
+        top: -450px;
+
+        @include desktop() {
+            top: -200px;
+        }
+        
+        h1 {
+            font-size: fonts(header);
+            font-weight: bold;
+            margin-top: 1em;
+            color: color(primaryHeader);
+
+            @include desktop() {
+                font-size: fonts(headerDesktop);
+                // margin-right: 1em;
+            }
+        }
+    }
+
+    @include desktop() { 
+        height: 300px;
+        display: grid;
+        grid-template-columns: 1fr repeat(2, minmax(auto, 50em)) 1fr;
+    }
+
+    .project-wrapper {
+        @include desktop() {
+            display: grid;
+        }
+    }
+
+    .project-body {
+        @include desktop() {
+            margin-left: 40px;
+            grid-column: 2/4;
+            display: flex;
+            position: absolute;
+            justify-content: space-around;
+            top: -75px;
+        }
+    }
+
+    .project-1 {
+        position: absolute;
+        top: -250px;
+        left: 0; right: 0;
+
+        @include desktop() {
+            position: static;        
+        }
+
+        .project-1-header {
+            width: projectImages(width);
+            height: projectImages(height);
+            border-radius: projectImages(border-radius);
+            background: url(../../Images/project1.jpg) no-repeat center;
+            margin: auto;
+            position: relative;
+
+            @include desktop() {
+                width: projectImages(widthDesktop);
+                height: projectImages(heightDesktop);
+                background: url(../../Images/project1.jpg) no-repeat cover;
+                margin: auto;
+            }
+
+            .project-1-btn {
+                font-size: fonts(btn);
+                color: white;
+                background: color(project1btn);
+                border: none;
+                padding: 0.5em;
+                position: absolute;
+                top: 50%; left: 50%;
+                transform: translate(-50%,-50%);
+
+                @include desktop() {
+                    font-size: fonts(btnDesktop);
+                }
+            }
+        }
+    }
+
+    .project-2 {
+        position: absolute;
+        top: 750px;
+        left: 0; right: 0;
+
+        @include desktop() {
+            position: static;
+        }
+
+        .project-2-header {
+            width: projectImages(width);
+            height: projectImages(height);
+            border-radius: projectImages(border-radius);
+            background: url(../../Images/project2.jpg) no-repeat center;
+            margin: auto;
+            position: relative;
+
+            @include desktop() {
+                width: projectImages(widthDesktop);
+                height: projectImages(heightDesktop);
+                background: url(../../Images/project2.jpg) no-repeat center;
+                margin: auto;
+            }
+    
+            .project-2-btn {
+                font-size: fonts(btn);
+                color: white;
+                background: color(project2btn);
+                border: none;
+                padding: 0.5em;
+                position: absolute;
+                top: 50%; left: 50%;
+                transform: translate(-50%,-50%);
+                
+                @include desktop() {
+                    width: 60%;
+                    font-size: fonts(btnDesktop);
+                }
+            }
+        }
+    }
+
+    .project-3 {
+        position: absolute;
+        top: 1750px;
+        left: 0; right: 0;
+
+        @include desktop() {
+            position: static; 
+        }
+
+        .project-3-header {
+            width: projectImages(width);
+            height: projectImages(height);
+            border-radius: projectImages(border-radius);
+            background: url(../../Images/project3.jpg) no-repeat center;
+            margin: auto;
+            position: relative;
+
+            @include desktop() {
+                width: projectImages(widthDesktop);
+                height: projectImages(heightDesktop);
+                background: url(../../Images/project3.jpg) no-repeat center;
+                margin: auto;
+            }
+    
+            .project-3-btn {
+                font-size: fonts(btn);
+                color: white;
+                background: color(project3btn);
+                border: none;
+                padding: 0.5em;
+                position: absolute;
+                top: 50%; left: 50%;
+                transform: translate(-50%,-50%);
+
+                @include desktop() {
+                    font-size: fonts(btnDesktop);
+                }
+            }
+        }
+    }
+
+    .project-text {
+        padding: 1em;
+        color: white;
+        font-size: fonts(body);
+
+        @include desktop() {
+            font-size: fonts(bodyDesktop);
+        }
+    }
+}
+
+
+
+.section-c-skills {
+    height: 375px;
+
+    .skills-header {
+        text-align: center;
+        // font-size: fonts(header);
+        // color: white;
+
+        h1 {
+            font-size: fonts(headerDesktop);
+            font-weight: bold;
+            margin-top: 1em;
+            color: white;
+        }
+    }
+    .carousel-inner {
+        margin-top: 2em;
+        text-align: center;
+    }
+
+    h3 {
+        margin: 2em;
+        color: white;
+    }
+}
+
+.section-d-contact {
+    height: 275px;
+    text-align: center;
+    padding: 3em;
+    background: color(sectionC);
+    position: relative;
+
+    @include desktop() {
+        height: 275px;
+    }
+
+    .contact-header {
+        text-align: center;
+        left: 0; right: 0;
+        
+        h1 {
+            font-size: fonts(headerDesktop);
+            font-weight: bold;
+            margin-top: 1em;
+            color: white;
+        }
+    }
+}
+
+
+.svg-box {
+    width: sizes(svgBoxWidth);
+    height: 100%;
+    margin: 0 1em;
+
+    @include desktop() {
+        width: sizes(svgBoxWidthDesktop);
+        margin: 0 3em;
+    }
+}
+
+.svg-box-contact {
+    width: sizes(svgBoxContactWidth);
+    height: 100%;
+    margin: 2em;
+
+    @include desktop() {
+        width: sizes(svgBoxContactWidthDesktop);
+    }
+}
+
+.svg-icon {
+    fill: white;
+}
+
+.shadow {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
