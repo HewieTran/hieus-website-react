@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/hieus-website-react/precache-manifest.832962c7b8e6c6f50549e82f5cdb0cb5.js"
+  "/hieus-website-react/precache-manifest.32d87bca9c463fec7c62669099b8d666.js"
 );
 
 self.addEventListener('message', (event) => {
