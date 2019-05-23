@@ -25,9 +25,9 @@ $colors: (
     primaryHeader: rgb(36, 66, 117),
     primary: rgb(71, 71, 71),
     sectionA: rgba(255, 255, 255, 0.7),
-    sectionB: rgba(17,193,255, 0.2),
+    sectionB: rgba(29, 135, 173, 0.6),
     sectionC: rgba(39, 39, 39, 0.8),
-    project1btn: rgb(219,50,54),
+    project1btn: rgb(1,210,119),
     project2btn: rgb(0,176,240),
     project3btn: rgb(255,192,0)
 ); 
@@ -35,14 +35,14 @@ $colors: (
 $imageSizes: (
     primary: 3em,
     width: 90%,
-    height: 550px,
+    height: 500px,
     widthDesktop: 280px,
     heightDesktop: 168px,
     border-radius: 25px,
     profileImgWidth: 500px,
     profileImgHeight: 100%,
-    profileImgWidthDesktop: 225px,
-    profileImgHeightDesktop: 225px,
+    profileImgWidthDesktop: 220px,
+    profileImgHeightDesktop: 220px,
 );
 
 $fonts: ( 
@@ -84,9 +84,14 @@ $sizes: (
 
 body, html {
     font-family: 'Nanum Gothic', sans-serif;
+    // font-family: Arial, Helvetica, sans-serif
     margin: 0;
     padding: 0;
-}
+};
+
+html body h1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+};
 
 .profileImg {
     width: profileImg(profileImgWidth);
@@ -108,14 +113,14 @@ body {
     
 
 .section-a-intro {
-    height: 1750px;
+    height: 1850px;
     background: color(sectionA);
     text-align: center;
     padding: 1.5em;
     padding-top: 5em;
 
     @include desktop() {
-        height: 560px;
+        height: 540px;
         display: grid;
         grid-template-columns: 1fr repeat(2, minmax(auto, 30em)) 1fr;
 
@@ -169,7 +174,7 @@ body {
     padding: 3em;
     background: color(sectionB);
     position: relative;
-    height: 2700px;
+    height: 2600px;
 
     .project-header {
         text-align: center;
@@ -178,7 +183,7 @@ body {
         top: -450px;
 
         @include desktop() {
-            top: -200px;
+            top: -180px;
         }
         
         h1 {
@@ -195,7 +200,7 @@ body {
     }
 
     @include desktop() { 
-        height: 300px;
+        height: 265px;
         display: grid;
         grid-template-columns: 1fr repeat(2, minmax(auto, 50em)) 1fr;
     }
@@ -208,7 +213,7 @@ body {
 
     .project-body {
         @include desktop() {
-            margin-left: 40px;
+            margin-left: 50px;
             grid-column: 2/4;
             display: flex;
             position: absolute;
@@ -223,21 +228,23 @@ body {
         left: 0; right: 0;
 
         @include desktop() {
-            position: static;        
+            position: static;
+            width: 33%;       
         }
 
         .project-1-header {
             width: projectImages(width);
             height: projectImages(height);
             border-radius: projectImages(border-radius);
-            background: url(../../Images/project1.jpg) no-repeat center;
+            background: url(../../Images/project1-2.jpg) no-repeat center;
             margin: auto;
             position: relative;
 
             @include desktop() {
                 width: projectImages(widthDesktop);
                 height: projectImages(heightDesktop);
-                background: url(../../Images/project1.jpg) no-repeat cover;
+                background: url(../../Images/project1-2.jpg) no-repeat center;
+                background-size: 300px;
                 margin: auto;
             }
 
@@ -256,6 +263,24 @@ body {
                 }
             }
         }
+
+        .project-1-header:hover {
+            background: url(../../Images/project1.jpg) no-repeat center;
+            background-size: 1000px;            
+            transition: 0.3s;
+
+            @include desktop() {
+                background-size: 300px;
+            }
+        }
+
+        .project-1-header a {
+            visibility: hidden;
+        }
+        .project-1-header:hover a {
+            visibility: visible;
+            transition: 0.3s;
+        }
     }
 
     .project-2 {
@@ -265,20 +290,23 @@ body {
 
         @include desktop() {
             position: static;
+            width: 33%;
         }
 
         .project-2-header {
             width: projectImages(width);
             height: projectImages(height);
             border-radius: projectImages(border-radius);
-            background: url(../../Images/project2.jpg) no-repeat center;
+            background: url(../../Images/project2-2.jpg) no-repeat center;
+            background-size: 1000px;
             margin: auto;
             position: relative;
 
             @include desktop() {
                 width: projectImages(widthDesktop);
                 height: projectImages(heightDesktop);
-                background: url(../../Images/project2.jpg) no-repeat center;
+                background: url(../../Images/project2-2.jpg) no-repeat center;
+                background-size: 300px;
                 margin: auto;
             }
     
@@ -297,16 +325,36 @@ body {
                     font-size: fonts(btnDesktop);
                 }
             }
+
+        }
+
+        .project-2-header:hover {
+            background: url(../../Images/project2.jpg) no-repeat center;
+            background-size: 900px;            
+            transition: 0.3s;
+
+            @include desktop() {
+                background-size: 300px;
+            }
+        }
+        
+        .project-2-header a {
+            visibility: hidden;
+        }
+        .project-2-header:hover a {
+            visibility: visible;
+            transition: 0.3s;
         }
     }
 
     .project-3 {
         position: absolute;
-        top: 1750px;
+        top: 1700px;
         left: 0; right: 0;
 
         @include desktop() {
             position: static; 
+            width: 33%;
         }
 
         .project-3-header {
@@ -321,6 +369,7 @@ body {
                 width: projectImages(widthDesktop);
                 height: projectImages(heightDesktop);
                 background: url(../../Images/project3.jpg) no-repeat center;
+                background-size: 500px;
                 margin: auto;
             }
     
@@ -363,10 +412,14 @@ body {
         // color: white;
 
         h1 {
-            font-size: fonts(headerDesktop);
+            font-size: fonts(header);
             font-weight: bold;
             margin-top: 1em;
             color: white;
+
+            @include desktop() {
+                font-size: fonts(headerDesktop);
+            }
         }
     }
     .carousel-inner {
@@ -396,10 +449,15 @@ body {
         left: 0; right: 0;
         
         h1 {
-            font-size: fonts(headerDesktop);
+            font-size: fonts(header);
             font-weight: bold;
-            margin-top: 1em;
+            
             color: white;
+
+            @include desktop() {
+                margin-top: 1em;
+                font-size: fonts(headerDesktop);
+            }
         }
     }
 }

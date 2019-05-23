@@ -14,13 +14,14 @@ const ProfileIntro = () => {
     return (
         <div className="section-a-content">
             <div className="profile-intro-header">
-                <h1>Hello! I'm Hieu and it's nice to virtually meet you :)</h1>
+                <h1>Hello there! <br></br> I'm Hieu and it's nice to virtually meet you :)</h1>
             </div>
             <div className="profile-intro-body">
-                <p>"Programming + Hieu" sounds like a silly idea to me 1 year ago.I went to college originally to get a degree in CS.
-                    Unforunately it never happened because the school I went to dropped the major.</p>
-                <p>Now I have a chance to actually do what I believe I was destined to do.
-                    And I'm not wasting a single second on this great opportunity</p>
+                <p>
+                    I'm a <strong>Web Developer</strong> currently working for a start-up based in Washington DC.  
+                    Art and tech have always been my 'thing', so it's only natural to combine the two together and specialize in frontend development.
+                    <br></br> Programming has been a challenging and rewarding experience for me. I'm excited to see where it will take me in the next few months.
+                </p>
             </div>
         </div>
     )
